@@ -8,10 +8,14 @@
 
 import UIKit
 
+import Alamofire
+import SwiftyJSON
+import AlamofireObjectMapper
+
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var places = [HistoricPlace]()
 
 
     override func viewDidLoad() {
@@ -25,6 +29,9 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        // Set place names to master view
+        setPlaces()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +46,7 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
+        places.insert(HistoricPlace(), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -49,9 +56,9 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let place = places[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.place = place
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -65,31 +72,76 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return places.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlacesCell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let place = places[indexPath.row]
+        cell.textLabel!.text = place.name
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return false
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            places.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 
+    /**
+     * Set the list of place names
+     */
+    func setPlaces() {
+        //
+        let httpHeaders = [
+            "apikey" : Constants.kApiKey
+        ]
+        
+        // Retrieve places from web and add each instance to collection
+        Alamofire.request(Constants.kOrgUrl, headers: httpHeaders).responseObject { (response: DataResponse<HistoricPlaces>) in
+            switch response.result {
+            case .success:
+                // Successfully retrieved data, now marshall to a collection of objects
+                if let value = response.result.value?.places {
+                    // Marshalled, set historic places collection accordingly
+                    self.places = value
+                    /**
+                    print("JSON: \(String(describing: self.places))")
+                    // Success retrieving JSON data, now marshall to objects
+                    for historicPlace in self.places {
+                        print((historicPlace.description) as Any)
+                        //                    let place = JSON(historicPlace)
+                        
+                        // Set
+    //                    if let addresses = historicPlace.address {
+                            for address in historicPlace.address {
+                                print ("JSON: \(JSON(address as Any))")
+                            }
+    //                    }
+                    }
+                } */
+                }
+                
+                // Reload table view to display data in cells
+                self.tableView.reloadData()
+            case .failure (let error):
+                // Failure retrieving JSON data, inform user
+                print("Failure with response: \(error)")
+                let dataAlert = UIAlertController(title: Constants.kErrorRetrievingDataTitle, message: error.localizedDescription, preferredStyle: .actionSheet)
+                dataAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(dataAlert, animated: true, completion: nil)
+            }
+        }
+    }
 
 }
 

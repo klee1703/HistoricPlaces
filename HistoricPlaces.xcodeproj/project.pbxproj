@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		790928A71FB4F01200ED85F4 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790928A61FB4F01200ED85F4 /* Address.swift */; };
+		790928B41FB5110B00ED85F4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 790928B31FB5110B00ED85F4 /* Alamofire.framework */; };
+		790928B61FB5110F00ED85F4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 790928B51FB5110F00ED85F4 /* SwiftyJSON.framework */; };
+		790928B91FB5468500ED85F4 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 790928B81FB5468500ED85F4 /* AlamofireObjectMapper.framework */; };
+		793BF9EB1FBCE3510040F3AF /* HistoricPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BF9EA1FBCE3510040F3AF /* HistoricPlaces.swift */; };
+		793BF9ED1FBCEF250040F3AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BF9EC1FBCEF250040F3AF /* Constants.swift */; };
+		793BF9EF1FBCFA6C0040F3AF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BF9EE1FBCFA6C0040F3AF /* Media.swift */; };
 		79AD70561FB27E0E00900274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD70551FB27E0E00900274 /* AppDelegate.swift */; };
 		79AD70581FB27E0E00900274 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD70571FB27E0E00900274 /* MasterViewController.swift */; };
 		79AD705A1FB27E0E00900274 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD70591FB27E0E00900274 /* DetailViewController.swift */; };
@@ -15,6 +22,8 @@
 		79AD70621FB27E0E00900274 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AD70601FB27E0E00900274 /* LaunchScreen.storyboard */; };
 		79AD706D1FB27E0F00900274 /* HistoricPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD706C1FB27E0F00900274 /* HistoricPlacesTests.swift */; };
 		79AD70781FB27E0F00900274 /* HistoricPlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD70771FB27E0F00900274 /* HistoricPlacesUITests.swift */; };
+		79B62A001FBCB2D700D78E95 /* HistoricPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B629FF1FBCB2D700D78E95 /* HistoricPlace.swift */; };
+		79D3F69A1FBB9D5E00434468 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D3F6991FBB9D5E00434468 /* ObjectMapper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		790928A61FB4F01200ED85F4 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		790928B31FB5110B00ED85F4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		790928B51FB5110F00ED85F4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		790928B81FB5468500ED85F4 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+		793BF9EA1FBCE3510040F3AF /* HistoricPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricPlaces.swift; sourceTree = "<group>"; };
+		793BF9EC1FBCEF250040F3AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		793BF9EE1FBCFA6C0040F3AF /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		79AD70521FB27E0E00900274 /* HistoricPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistoricPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AD70551FB27E0E00900274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AD70571FB27E0E00900274 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +65,8 @@
 		79AD70731FB27E0F00900274 /* HistoricPlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HistoricPlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AD70771FB27E0F00900274 /* HistoricPlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricPlacesUITests.swift; sourceTree = "<group>"; };
 		79AD70791FB27E0F00900274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79B629FF1FBCB2D700D78E95 /* HistoricPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricPlace.swift; sourceTree = "<group>"; };
+		79D3F6991FBB9D5E00434468 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790928B41FB5110B00ED85F4 /* Alamofire.framework in Frameworks */,
+				790928B61FB5110F00ED85F4 /* SwiftyJSON.framework in Frameworks */,
+				790928B91FB5468500ED85F4 /* AlamofireObjectMapper.framework in Frameworks */,
+				79D3F69A1FBB9D5E00434468 /* ObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +98,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		790928B21FB5110A00ED85F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79D3F6991FBB9D5E00434468 /* ObjectMapper.framework */,
+				790928B81FB5468500ED85F4 /* AlamofireObjectMapper.framework */,
+				790928B51FB5110F00ED85F4 /* SwiftyJSON.framework */,
+				790928B31FB5110B00ED85F4 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		793BF9F01FBCFB520040F3AF /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				793BF9EA1FBCE3510040F3AF /* HistoricPlaces.swift */,
+				79B629FF1FBCB2D700D78E95 /* HistoricPlace.swift */,
+				790928A61FB4F01200ED85F4 /* Address.swift */,
+				793BF9EE1FBCFA6C0040F3AF /* Media.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
 		79AD70491FB27E0E00900274 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +127,7 @@
 				79AD706B1FB27E0F00900274 /* HistoricPlacesTests */,
 				79AD70761FB27E0F00900274 /* HistoricPlacesUITests */,
 				79AD70531FB27E0E00900274 /* Products */,
+				790928B21FB5110A00ED85F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,11 +146,13 @@
 			children = (
 				79AD70551FB27E0E00900274 /* AppDelegate.swift */,
 				79AD70571FB27E0E00900274 /* MasterViewController.swift */,
+				793BF9F01FBCFB520040F3AF /* Mappers */,
 				79AD70591FB27E0E00900274 /* DetailViewController.swift */,
 				79AD705B1FB27E0E00900274 /* Main.storyboard */,
 				79AD705E1FB27E0E00900274 /* Assets.xcassets */,
 				79AD70601FB27E0E00900274 /* LaunchScreen.storyboard */,
 				79AD70631FB27E0E00900274 /* Info.plist */,
+				793BF9EC1FBCEF250040F3AF /* Constants.swift */,
 			);
 			path = HistoricPlaces;
 			sourceTree = "<group>";
@@ -138,6 +185,7 @@
 				79AD704E1FB27E0E00900274 /* Sources */,
 				79AD704F1FB27E0E00900274 /* Frameworks */,
 				79AD70501FB27E0E00900274 /* Resources */,
+				790928B71FB5118400ED85F4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,6 +305,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		790928B71FB5118400ED85F4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		79AD704E1FB27E0E00900274 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -264,7 +332,12 @@
 			files = (
 				79AD705A1FB27E0E00900274 /* DetailViewController.swift in Sources */,
 				79AD70581FB27E0E00900274 /* MasterViewController.swift in Sources */,
+				79B62A001FBCB2D700D78E95 /* HistoricPlace.swift in Sources */,
 				79AD70561FB27E0E00900274 /* AppDelegate.swift in Sources */,
+				793BF9ED1FBCEF250040F3AF /* Constants.swift in Sources */,
+				793BF9EB1FBCE3510040F3AF /* HistoricPlaces.swift in Sources */,
+				793BF9EF1FBCFA6C0040F3AF /* Media.swift in Sources */,
+				790928A71FB4F01200ED85F4 /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +504,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U823YHXB73;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = HistoricPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pellago.HistoricPlaces;
@@ -445,6 +523,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U823YHXB73;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = HistoricPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pellago.HistoricPlaces;

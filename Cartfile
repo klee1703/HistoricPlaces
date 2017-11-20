@@ -1,0 +1,4 @@
+github "Alamofire/Alamofire" ~> 4.5
+github "SwiftyJSON/SwiftyJSON"
+github "tristanhimmelman/AlamofireObjectMapper" ~> 5.0
+github "Hearst-DD/ObjectMapper" ~> 3.0

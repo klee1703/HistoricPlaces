@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import AlamofireObjectMapper
+@testable import ObjectMapper
 @testable import HistoricPlaces
 
 class HistoricPlacesTests: XCTestCase {
