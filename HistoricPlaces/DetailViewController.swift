@@ -11,27 +11,27 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
-    
-    let hotelAbsolutePathPrefix = "http://www.historichotels.org/hotels-resorts/".lowercased()
-    var hotelUrl: String?
+
+    var place: HistoricPlace?
+    // First part of hotel URL
+    let hotelUrlPrefix = Constants.kDefaultHotelUrl + Constants.kHotelResortsUrlSegment
 
     func configureView() {
         // Update the user interface for the detail item.
         if let placeDetail = place {
+            placeDetail.placeUrl = getHotelUrl(place: placeDetail)
             // Set title for page
             self.title = placeDetail.name
-
             if let label = detailDescriptionLabel {
-                label.text = self.hotelUrl
-                
+                label.text = placeDetail.placeUrl
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-        self.hotelUrl = getHotelUrl(place: place!)
         configureView()
     }
 
@@ -40,28 +40,23 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var place: HistoricPlace? {
-        didSet {
-            // Update the view.
-            configureView()
-        }
-    }
-
+    /**
+     * Parse description to retrieve hotel URL
+     */
     func getHotelUrl(place: HistoricPlace) -> String {
-        // Parse description to retrieve url
 
-        // Check to confirm the JSON object contains a description string, if not return ""
+        // Check to confirm the JSON object contains a description string, if not return default URL
         guard place.description != nil else {
-            return ""
+            return Constants.kDefaultHotelUrl
         }
         
         // Convert to all lower case
         let placeDescription = place.description!.lowercased()
         
         // Verify description contains path prefix
-        if (placeDescription.contains(hotelAbsolutePathPrefix)) {
+        if (placeDescription.contains(hotelUrlPrefix)) {
             // Find range for absolute path prefix
-            let hotelsResortRange = placeDescription.range(of: hotelAbsolutePathPrefix)
+            let hotelsResortRange = placeDescription.range(of: hotelUrlPrefix)
             
             // Find index for position up to the path prefix
             let hotelPathUrlStartIndex = placeDescription.distance(from: (placeDescription.startIndex), to: (hotelsResortRange?.lowerBound)!)
@@ -72,7 +67,7 @@ class DetailViewController: UIViewController {
             let hotelPathStartString = String(describing: hotelPathStartUrl) as String
             
             // Find range for hotel-resorts segment
-            if let hotelResortsRange = hotelPathStartString.range(of: "hotels-resorts/") {
+            if let hotelResortsRange = hotelPathStartString.range(of: Constants.kHotelResortsUrlSegment) {
                 
                 // Find url string up to end of hotel-resorts segment
                 let urlToHotelResortsSegment = hotelPathStartString[..<hotelResortsRange.upperBound]
@@ -97,8 +92,8 @@ class DetailViewController: UIViewController {
             }
         }
         
-        // Conditions not satisfied, just return empty string
-        return ""
+        // Conditions not satisfied, just return default URL
+        return Constants.kDefaultHotelUrl
     }
 }
 

@@ -79,6 +79,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlacesCell", for: indexPath)
 
         let place = places[indexPath.row]
+        place.placeUrl = ""
         cell.textLabel!.text = place.name
         return cell
     }

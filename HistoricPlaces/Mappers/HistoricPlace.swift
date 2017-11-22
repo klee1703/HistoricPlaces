@@ -23,6 +23,7 @@ class HistoricPlace : Mappable {
     var directions: String?
     var phone: String?
     var media: [Media]?
+    var placeUrl: String?
     
     required init?(map: Map) {
         longitude = 0.0

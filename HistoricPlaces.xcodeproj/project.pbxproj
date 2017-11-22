@@ -146,8 +146,8 @@
 			children = (
 				79AD70551FB27E0E00900274 /* AppDelegate.swift */,
 				79AD70571FB27E0E00900274 /* MasterViewController.swift */,
-				793BF9F01FBCFB520040F3AF /* Mappers */,
 				79AD70591FB27E0E00900274 /* DetailViewController.swift */,
+				793BF9F01FBCFB520040F3AF /* Mappers */,
 				79AD705B1FB27E0E00900274 /* Main.storyboard */,
 				79AD705E1FB27E0E00900274 /* Assets.xcassets */,
 				79AD70601FB27E0E00900274 /* LaunchScreen.storyboard */,
