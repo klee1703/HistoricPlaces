@@ -22,7 +22,7 @@ class Address: Mappable {
     var city: String?
     var stateCode: String?
     var countryCode: String?
-    var postalCode: String?
+    var postalCode: Int?
 
     init() {
     }

@@ -10,9 +10,13 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
+    @IBOutlet weak var descriptionView: UITextView!
+    @IBOutlet weak var emailAddress: UITextField!
+    @IBOutlet weak var phoneNumber: UITextField!
+    
+    // place
     var place: HistoricPlace?
+    
     // First part of hotel URL
     let hotelUrlPrefix = Constants.kDefaultHotelUrl + Constants.kHotelResortsUrlSegment
 
@@ -22,9 +26,9 @@ class DetailViewController: UIViewController {
             placeDetail.placeUrl = getHotelUrl(place: placeDetail)
             // Set title for page
             self.title = placeDetail.name
-            if let label = detailDescriptionLabel {
-                label.text = placeDetail.placeUrl
-            }
+            descriptionView.text = placeDetail.description
+            emailAddress.text = placeDetail.email
+            phoneNumber.text = placeDetail.phone
         }
     }
 
@@ -95,5 +99,16 @@ class DetailViewController: UIViewController {
         // Conditions not satisfied, just return default URL
         return Constants.kDefaultHotelUrl
     }
+
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addressSegue" {
+                let controller = (segue.destination as! UINavigationController).topViewController as! AddressViewController
+                controller.place = place
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
 }
 
