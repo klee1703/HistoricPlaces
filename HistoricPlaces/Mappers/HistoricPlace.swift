@@ -24,12 +24,15 @@ class HistoricPlace : Mappable {
     var phone: String?
     var media: [Media]?
     var placeUrl: String?
+    var links: [Link]?
+    
     
     required init?(map: Map) {
         longitude = 0.0
         latitude = 0.0
         address = []
         media = []
+        links = []
     }
 
     init() {
@@ -37,6 +40,7 @@ class HistoricPlace : Mappable {
         latitude = 0.0
         address = []
         media = []
+        links = []
    }
 
     func mapping(map: Map) {
@@ -49,5 +53,6 @@ class HistoricPlace : Mappable {
         directions <- map["FacilityDirections"]
         phone <- map["FacilityPhone"]
         media <- map["MEDIA"]
+        links <- map["LINK"]
     }
 }

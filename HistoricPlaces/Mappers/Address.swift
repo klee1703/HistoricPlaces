@@ -12,10 +12,6 @@ import AlamofireObjectMapper
 import ObjectMapper
 
 class Address: Mappable {
-    required init?(map: Map) {
-        
-    }
-    
     var streetAddress1: String?
     var streetAddress2: String?
     var streetAddress3: String?
@@ -23,7 +19,10 @@ class Address: Mappable {
     var stateCode: String?
     var countryCode: String?
     var postalCode: Int?
-
+    
+    required init?(map: Map) {        
+    }
+    
     init() {
     }
     
