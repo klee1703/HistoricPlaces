@@ -35,6 +35,9 @@ class NotesViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        notesView.layer.borderColor = UIColor.black.cgColor
+        notesView.layer.borderWidth = 2.0;
+        notesView.layer.cornerRadius = 5.0;
         getNotes()
     }
 

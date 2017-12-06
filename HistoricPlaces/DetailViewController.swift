@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import WebKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, WKUIDelegate {
 
-    @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var url: UITextField!
+    @IBOutlet weak var descriptionWebView: WKWebView!
+    @IBOutlet weak var addressButton: UIButton!
+    @IBOutlet weak var notesButton: UIButton!
     
     // place
     var place: HistoricPlace?
@@ -24,13 +27,32 @@ class DetailViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         if let placeDetail = place {
+            // Enable address and notes buttons
+            addressButton.isEnabled = true
+            notesButton.isEnabled = true
+            
             placeDetail.placeUrl = getHotelUrl(place: placeDetail)
             // Set title for page
             self.title = placeDetail.name
-            descriptionView.text = placeDetail.description
             emailAddress.text = placeDetail.email
             phoneNumber.text = placeDetail.phone
             url.text = placeDetail.placeUrl
+
+            descriptionWebView.uiDelegate = self
+            if let urlPath = placeDetail.placeUrl {
+                let request = URLRequest(url: URL(string: urlPath)!)
+                descriptionWebView.load(request)
+            }
+        } else {
+            // Disable address and notes buttons
+            addressButton.isEnabled = false
+            notesButton.isEnabled = false
+            
+            // Load default URL
+            descriptionWebView.load(URLRequest(url: URL(string: Constants.kDefaultHotelUrl)!))
+            url.text = Constants.kDefaultHotelUrl
+            emailAddress.text = Constants.kDefaultEmailAddress
+            phoneNumber.text = Constants.kDefaultPhoneNumber
         }
     }
 
@@ -38,6 +60,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        descriptionWebView.uiDelegate = self
+        descriptionWebView.layer.borderColor = UIColor.black.cgColor
+        descriptionWebView.layer.borderWidth = 1.0;
         configureView()
     }
 

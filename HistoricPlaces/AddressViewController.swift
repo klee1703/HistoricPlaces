@@ -7,24 +7,26 @@
 //
 
 import UIKit
+import WebKit
 
-class AddressViewController: UIViewController {
+class AddressViewController: UIViewController, WKUIDelegate {
     @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var countryField: UITextField!
     @IBOutlet weak var postalCodeField: UITextField!
-    @IBOutlet weak var directionsView: UITextView!
-
+    @IBOutlet weak var directionsWebView: WKWebView!
     // place
     var place: HistoricPlace?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        directionsWebView.uiDelegate = self
+        directionsWebView.layer.borderColor = UIColor.black.cgColor
+        directionsWebView.layer.borderWidth = 1.0;
         if let placeDetail = place {
-            directionsView.text = placeDetail.directions
             if let addressDetail = placeDetail.address {
                 addressField.text = addressDetail[0].streetAddress1
                 cityField.text = addressDetail[0].city
@@ -32,6 +34,9 @@ class AddressViewController: UIViewController {
                 countryField.text = addressDetail[0].countryCode
                 if let postalCode = addressDetail[0].postalCode {
                     postalCodeField.text = String(postalCode)
+                }
+                if let directions = placeDetail.directions{
+                    directionsWebView.loadHTMLString("<body style=\"background-color: lightgray\"><h1>" + directions + "</h1></body>", baseURL: nil)
                 }
             }
         }

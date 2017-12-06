@@ -116,21 +116,6 @@ class MasterViewController: UITableViewController {
                 if let value = response.result.value?.places {
                     // Marshalled, set historic places collection accordingly
                     self.places = value
-                    /**
-                    print("JSON: \(String(describing: self.places))")
-                    // Success retrieving JSON data, now marshall to objects
-                    for historicPlace in self.places {
-                        print((historicPlace.description) as Any)
-                        //                    let place = JSON(historicPlace)
-                        
-                        // Set
-    //                    if let addresses = historicPlace.address {
-                            for address in historicPlace.address {
-                                print ("JSON: \(JSON(address as Any))")
-                            }
-    //                    }
-                    }
-                } */
                 }
                 
                 // Reload table view to display data in cells
