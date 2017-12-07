@@ -39,20 +39,29 @@ class DetailViewController: UIViewController, WKUIDelegate {
             url.text = placeDetail.placeUrl
 
             descriptionWebView.uiDelegate = self
-            if let urlPath = placeDetail.placeUrl {
-                let request = URLRequest(url: URL(string: urlPath)!)
-                descriptionWebView.load(request)
+            
+            // Load specified URL
+            if let urlPath = placeDetail.placeUrl {                
+                DispatchQueue.main.async {
+                    let request = URLRequest(url: URL(string: urlPath)!)
+                    self.descriptionWebView.load(request)
+                }
             }
         } else {
             // Disable address and notes buttons
             addressButton.isEnabled = false
             notesButton.isEnabled = false
             
-            // Load default URL
-            descriptionWebView.load(URLRequest(url: URL(string: Constants.kDefaultHotelUrl)!))
+            // Set view text
             url.text = Constants.kDefaultHotelUrl
-            emailAddress.text = Constants.kDefaultEmailAddress
+            phoneNumber.text = Constants.kDefaultEmailAddress
             phoneNumber.text = Constants.kDefaultPhoneNumber
+
+            // Load default URL
+            DispatchQueue.main.async {
+                let request = URLRequest(url: URL(string: Constants.kDefaultHotelUrl)!)
+                self.descriptionWebView.load(request)
+            }
         }
     }
 
@@ -63,6 +72,13 @@ class DetailViewController: UIViewController, WKUIDelegate {
         descriptionWebView.uiDelegate = self
         descriptionWebView.layer.borderColor = UIColor.black.cgColor
         descriptionWebView.layer.borderWidth = 1.0;
+        
+        // Increase font size for textfields
+        url.font =  UIFont(name: (url.font?.fontName)!, size: (url.font?.pointSize)!+1)!
+        emailAddress.font =  UIFont(name: (emailAddress.font?.fontName)!, size: (emailAddress.font?.pointSize)!+1)!
+        phoneNumber.font =  UIFont(name: (phoneNumber.font?.fontName)!, size: (phoneNumber.font?.pointSize)!+1)!
+        
+        // Configure view
         configureView()
     }
 

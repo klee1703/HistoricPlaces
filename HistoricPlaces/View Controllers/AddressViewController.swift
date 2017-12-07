@@ -26,6 +26,19 @@ class AddressViewController: UIViewController, WKUIDelegate {
         directionsWebView.uiDelegate = self
         directionsWebView.layer.borderColor = UIColor.black.cgColor
         directionsWebView.layer.borderWidth = 1.0;
+        
+        // Increase font size for textfields
+        addressField.font =  UIFont(name: (addressField.font?.fontName)!, size: (addressField.font?.pointSize)!+1)!
+        cityField.font =  UIFont(name: (cityField.font?.fontName)!, size: (cityField.font?.pointSize)!+1)!
+        stateField.font =  UIFont(name: (stateField.font?.fontName)!, size: (stateField.font?.pointSize)!+1)!
+        countryField.font =  UIFont(name: (countryField.font?.fontName)!, size: (countryField.font?.pointSize)!+1)!
+        postalCodeField.font =  UIFont(name: (postalCodeField.font?.fontName)!, size: (postalCodeField.font?.pointSize)!+1)!
+
+        // Configure view
+        configureView()
+    }
+    
+    func configureView() {
         if let placeDetail = place {
             if let addressDetail = placeDetail.address {
                 addressField.text = addressDetail[0].streetAddress1
@@ -36,7 +49,8 @@ class AddressViewController: UIViewController, WKUIDelegate {
                     postalCodeField.text = String(postalCode)
                 }
                 if let directions = placeDetail.directions{
-                    directionsWebView.loadHTMLString("<body style=\"background-color: lightgray\"><h1>" + directions + "</h1></body>", baseURL: nil)
+                    // Load directions web content, styling as specified
+                    directionsWebView.loadHTMLString("<body style=\"background-color: lightgray; color: gray;\"><h1>" + directions + "</h1></body>", baseURL: nil)
                 }
             }
         }

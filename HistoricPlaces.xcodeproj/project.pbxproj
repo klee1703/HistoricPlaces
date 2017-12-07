@@ -136,9 +136,38 @@
 				790928A61FB4F01200ED85F4 /* Address.swift */,
 				793BF9EE1FBCFA6C0040F3AF /* Media.swift */,
 				790CA2161FCDCEDB00D46234 /* Link.swift */,
-				790CA2181FCDD39B00D46234 /* LinkType.swift */,
 			);
 			path = Mappers;
+			sourceTree = "<group>";
+		};
+		796D9E481FD9BD220033BE73 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				79AD705B1FB27E0E00900274 /* Main.storyboard */,
+				79AD70601FB27E0E00900274 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		796D9E491FD9BD520033BE73 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				79AD70571FB27E0E00900274 /* MasterViewController.swift */,
+				79AD70591FB27E0E00900274 /* DetailViewController.swift */,
+				7970A8BA1FC6136600404236 /* AddressViewController.swift */,
+				790CA21A1FCE035E00D46234 /* NotesViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		796D9E4A1FD9BE2D0033BE73 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				7940DB7D1FD072AA00144299 /* CloudDBManager.swift */,
+				7940DB7F1FD0974600144299 /* PlaceNote.swift */,
+				790CA21C1FCE05B300D46234 /* Notes.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		79AD70491FB27E0E00900274 = {
@@ -165,21 +194,16 @@
 		79AD70541FB27E0E00900274 /* HistoricPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				790CA21E1FCF590000D46234 /* HistoricPlaces.entitlements */,
 				79AD70551FB27E0E00900274 /* AppDelegate.swift */,
-				79AD70571FB27E0E00900274 /* MasterViewController.swift */,
-				79AD70591FB27E0E00900274 /* DetailViewController.swift */,
-				7970A8BA1FC6136600404236 /* AddressViewController.swift */,
-				790CA21A1FCE035E00D46234 /* NotesViewController.swift */,
-				7940DB7D1FD072AA00144299 /* CloudDBManager.swift */,
+				796D9E491FD9BD520033BE73 /* View Controllers */,
+				796D9E481FD9BD220033BE73 /* Storyboards */,
+				796D9E4A1FD9BE2D0033BE73 /* Database */,
 				793BF9F01FBCFB520040F3AF /* Mappers */,
-				790CA21C1FCE05B300D46234 /* Notes.swift */,
-				7940DB7F1FD0974600144299 /* PlaceNote.swift */,
-				79AD705B1FB27E0E00900274 /* Main.storyboard */,
-				79AD70601FB27E0E00900274 /* LaunchScreen.storyboard */,
+				790CA2181FCDD39B00D46234 /* LinkType.swift */,
+				793BF9EC1FBCEF250040F3AF /* Constants.swift */,
+				790CA21E1FCF590000D46234 /* HistoricPlaces.entitlements */,
 				79AD705E1FB27E0E00900274 /* Assets.xcassets */,
 				79AD70631FB27E0E00900274 /* Info.plist */,
-				793BF9EC1FBCEF250040F3AF /* Constants.swift */,
 			);
 			path = HistoricPlaces;
 			sourceTree = "<group>";
