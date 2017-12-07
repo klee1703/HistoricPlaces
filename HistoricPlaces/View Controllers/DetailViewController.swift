@@ -54,7 +54,7 @@ class DetailViewController: UIViewController, WKUIDelegate {
             
             // Set view text
             url.text = Constants.kDefaultHotelUrl
-            phoneNumber.text = Constants.kDefaultEmailAddress
+            emailAddress.text = Constants.kDefaultEmailAddress
             phoneNumber.text = Constants.kDefaultPhoneNumber
 
             // Load default URL

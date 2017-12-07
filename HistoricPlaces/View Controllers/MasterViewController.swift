@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import AlamofireObjectMapper
+import  CloudKit
 
 class MasterViewController: UITableViewController {
 
@@ -38,6 +39,37 @@ class MasterViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        
+        if isNetworkUp() {
+            if isSignedIn() == false {
+                // Popup icloud login screen
+                let alert = getStandardAlert(title: Constants.kAccountLoginTitle, message: Constants.kAccountLoginMessage)
+                alert.addAction(UIAlertAction(title:"Okay", style:.cancel, handler:nil));
+                
+                // Add popover to present
+                let presenter = alert.popoverPresentationController
+                presenter?.sourceView = self.view
+                presenter?.sourceRect = self.view.bounds
+                self.present(alert, animated: true, completion: nil)
+            }
+            else {
+                // Get/create app username
+                print("Signed in")
+            }
+        }
+        else {
+            let alert = getStandardAlert(title: Constants.kNetworkDownTitle, message: Constants.kNetworkDownMessage)
+            
+            // Add popover to present
+            let presenter = alert.popoverPresentationController
+            presenter?.sourceView = self.view
+            presenter?.sourceRect = self.view.bounds
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,6 +157,11 @@ class MasterViewController: UITableViewController {
                 print("Failure with response: \(error)")
                 let dataAlert = UIAlertController(title: Constants.kErrorRetrievingDataTitle, message: error.localizedDescription, preferredStyle: .actionSheet)
                 dataAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                // Add popover to present
+                let presenter = dataAlert.popoverPresentationController
+                presenter?.sourceView = self.view
+                presenter?.sourceRect = self.view.bounds
                 self.present(dataAlert, animated: true, completion: nil)
             }
         }

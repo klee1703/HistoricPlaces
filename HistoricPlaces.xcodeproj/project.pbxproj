@@ -31,6 +31,7 @@
 		79AD706D1FB27E0F00900274 /* HistoricPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD706C1FB27E0F00900274 /* HistoricPlacesTests.swift */; };
 		79AD70781FB27E0F00900274 /* HistoricPlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD70771FB27E0F00900274 /* HistoricPlacesUITests.swift */; };
 		79B62A001FBCB2D700D78E95 /* HistoricPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B629FF1FBCB2D700D78E95 /* HistoricPlace.swift */; };
+		79CA4B1A1FD9ED6100606337 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CA4B191FD9ED6100606337 /* Utilities.swift */; };
 		79D3F69A1FBB9D5E00434468 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D3F6991FBB9D5E00434468 /* ObjectMapper.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		79AD70771FB27E0F00900274 /* HistoricPlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricPlacesUITests.swift; sourceTree = "<group>"; };
 		79AD70791FB27E0F00900274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79B629FF1FBCB2D700D78E95 /* HistoricPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricPlace.swift; sourceTree = "<group>"; };
+		79CA4B191FD9ED6100606337 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		79D3F6991FBB9D5E00434468 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				79AD70571FB27E0E00900274 /* MasterViewController.swift */,
+				79CA4B191FD9ED6100606337 /* Utilities.swift */,
 				79AD70591FB27E0E00900274 /* DetailViewController.swift */,
 				7970A8BA1FC6136600404236 /* AddressViewController.swift */,
 				790CA21A1FCE035E00D46234 /* NotesViewController.swift */,
@@ -395,6 +398,7 @@
 				79AD705A1FB27E0E00900274 /* DetailViewController.swift in Sources */,
 				79AD70581FB27E0E00900274 /* MasterViewController.swift in Sources */,
 				79B62A001FBCB2D700D78E95 /* HistoricPlace.swift in Sources */,
+				79CA4B1A1FD9ED6100606337 /* Utilities.swift in Sources */,
 				7940DB7E1FD072AA00144299 /* CloudDBManager.swift in Sources */,
 				790CA2191FCDD39B00D46234 /* LinkType.swift in Sources */,
 				79AD70561FB27E0E00900274 /* AppDelegate.swift in Sources */,
