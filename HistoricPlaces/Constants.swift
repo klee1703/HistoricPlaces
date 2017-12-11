@@ -14,7 +14,7 @@ struct Constants {
     static let kOrganizationID = "143"
     static let kApiKey = "C61DDD8C1AB947E4AE2D6C815A8DCF55"
     static let kOrgBaseUrl = "https://ridb.recreation.gov/api/v1/organizations/"
-    static let kOrgUrl = "https://ridb.recreation.gov/api/v1/organizations/143/facilities.json?full=true&apikey=C61DDD8C1AB947E4AE2D6C815A8DCF55"
+    static let kOrgUrl = "https://ridb.recreation.gov/api/v1/organizations/143/facilities.json?&limit=100&apikey=C61DDD8C1AB947E4AE2D6C815A8DCF55"
     static let kDefaultHotelUrl = "http://www.historichotels.org/"
     static let kDefaultEmailAddress = "HistoricHotelsofAmerica@HistoricHotels.org"
     static let kDefaultPhoneNumber = "800-678-8946"

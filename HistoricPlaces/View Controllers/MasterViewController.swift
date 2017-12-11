@@ -17,21 +17,29 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var places = [HistoricPlace]()
+    var parameters: [String: Int] = [:]
+    var httpHeaders: [String: String] = [:]
+    var recordOffset = 0
+    let url = URL(string: Constants.kOrgUrl)
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+/*
         navigationItem.leftBarButtonItem = editButtonItem
-
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
+*/
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
             self.title = "Historic Places"
         }
-        
+        parameters["limit"] = 100
+        parameters["offset"] = recordOffset
+        httpHeaders[ "apikey"] = Constants.kApiKey
+
         // Set place names to master view
         setPlaces()
     }
@@ -130,28 +138,44 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.lightGray
+        } else {
+            cell.backgroundColor = UIColor.gray
+        }
+    }
+
+    // MARK: - Functions
 
     /**
      * Set the list of place names
      */
     func setPlaces() {
-        //
-        let httpHeaders = [
-            "apikey" : Constants.kApiKey
-        ]
-        
         // Retrieve places from web and add each instance to collection
-        Alamofire.request(Constants.kOrgUrl, headers: httpHeaders).responseObject { (response: DataResponse<HistoricPlaces>) in
+        Alamofire.request(url!, parameters: parameters, encoding: URLEncoding.default, headers: httpHeaders).responseObject { (response: DataResponse<HistoricPlaces>) in
             switch response.result {
             case .success:
                 // Successfully retrieved data, now marshall to a collection of objects
                 if let value = response.result.value?.places {
                     // Marshalled, set historic places collection accordingly
-                    self.places = value
+                    if 0 != value.count {
+                        // Results non-zero, add to array
+                        for place in value {
+                            self.places.append(place)
+                        }
+                        // Increment offset accordingly and retrieve more
+                        self.recordOffset = self.places.count
+                        self.parameters["offset"] = self.recordOffset
+                        self.setPlaces()
+                    } else {
+                        // Results retrieved zero, now reload table view
+                        self.tableView.reloadData()
+                    }
                 }
                 
-                // Reload table view to display data in cells
-                self.tableView.reloadData()
+            // Reload table view to display data in cells
             case .failure (let error):
                 // Failure retrieving JSON data, inform user
                 print("Failure with response: \(error)")

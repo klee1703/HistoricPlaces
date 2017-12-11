@@ -41,12 +41,14 @@ class AddressViewController: UIViewController, WKUIDelegate {
     func configureView() {
         if let placeDetail = place {
             if let addressDetail = placeDetail.address {
-                addressField.text = addressDetail[0].streetAddress1
-                cityField.text = addressDetail[0].city
-                stateField.text = addressDetail[0].stateCode
-                countryField.text = addressDetail[0].countryCode
-                if let postalCode = addressDetail[0].postalCode {
-                    postalCodeField.text = String(postalCode)
+                if addressDetail.count > 0 {
+                    addressField.text = addressDetail[0].streetAddress1
+                    cityField.text = addressDetail[0].city
+                    stateField.text = addressDetail[0].stateCode
+                    countryField.text = addressDetail[0].countryCode
+                    if let postalCode = addressDetail[0].postalCode {
+                        postalCodeField.text = String(postalCode)
+                    }
                 }
                 if let directions = placeDetail.directions{
                     // Load directions web content, styling as specified

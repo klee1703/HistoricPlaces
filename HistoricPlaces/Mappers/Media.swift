@@ -15,6 +15,7 @@ public class Media: Mappable {
     var description: String?
     var url: String?
     var title: String?
+    var entityType: String?
     
     public required init?(map: Map) {
         
@@ -24,6 +25,7 @@ public class Media: Mappable {
         description <- map["Description"]
         url <- map["URL"]
         title <- map["Title"]
+        entityType <- map["EntityType"]
     }
     
     
