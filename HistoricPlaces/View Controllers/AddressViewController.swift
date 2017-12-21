@@ -46,9 +46,8 @@ class AddressViewController: UIViewController, WKUIDelegate {
                     cityField.text = addressDetail[0].city
                     stateField.text = addressDetail[0].stateCode
                     countryField.text = addressDetail[0].countryCode
-                    if let postalCode = addressDetail[0].postalCode {
-                        postalCodeField.text = String(postalCode)
-                    }
+                    let postalCode = addressDetail[0].postalCode
+                    postalCodeField.text = String(postalCode)
                 }
                 if let directions = placeDetail.directions{
                     // Load directions web content, styling as specified

@@ -18,21 +18,23 @@ class Address: Mappable {
     var city: String?
     var stateCode: String?
     var countryCode: String?
-    var postalCode: Int?
+    var postalCode: Int
     
-    required init?(map: Map) {        
+    required init?(map: Map) {
+        postalCode = 0
     }
     
     init() {
+        postalCode = 0
     }
     
     func mapping(map: Map) {
+        postalCode <- map["PostalCode"]
+        city <- map["City"]
         streetAddress1 <- map["FacilityStreetAddress1"]
         streetAddress2 <- map["FacilityStreetAddress2"]
         streetAddress3 <- map["FacilityStreetAddress3"]
-        city <- map["City"]
         stateCode <- map["AddressStateCode"]
         countryCode <- map["AddressCountryCode"]
-        postalCode <- map["PostalCode"]
     }
 }

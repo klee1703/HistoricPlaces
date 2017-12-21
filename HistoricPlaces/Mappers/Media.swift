@@ -16,8 +16,12 @@ public class Media: Mappable {
     var url: String?
     var title: String?
     var entityType: String?
+
+    init() {
+        
+    }
     
-    public required init?(map: Map) {
+    required public init?(map: Map) {
         
     }
     

@@ -12,9 +12,8 @@ import AlamofireObjectMapper
 import ObjectMapper
 
 class HistoricPlace : Mappable {
-    
-    
     var description: String?
+    var useFeeDescription: String?
     var longitude: Double
     var latitude: Double
     var email: String?
@@ -25,8 +24,7 @@ class HistoricPlace : Mappable {
     var media: [Media]?
     var placeUrl: String?
     var links: [Link]?
-    
-    
+
     required init?(map: Map) {
         longitude = 0.0
         latitude = 0.0
@@ -45,14 +43,15 @@ class HistoricPlace : Mappable {
 
     func mapping(map: Map) {
         description <- map["FacilityDescription"]
+        useFeeDescription <- map["FacilityUseFeeDescription"]
+        media <- map["MEDIA"]
+        links <- map["LINK"]
+        email <- map["FacilityEmail"]
         longitude <- map["FacilityLongitude"]
         latitude <- map["FacilityLatitude"]
-        email <- map["FacilityEmail"]
         address <- map["FACILITYADDRESS"]
         name <- map["FacilityName"]
         directions <- map["FacilityDirections"]
         phone <- map["FacilityPhone"]
-        media <- map["MEDIA"]
-        links <- map["LINK"]
     }
 }

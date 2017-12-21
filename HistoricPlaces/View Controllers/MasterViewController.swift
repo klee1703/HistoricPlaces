@@ -9,7 +9,6 @@
 import UIKit
 
 import Alamofire
-import SwiftyJSON
 import AlamofireObjectMapper
 import  CloudKit
 
@@ -17,9 +16,9 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var places = [HistoricPlace]()
-    var parameters: [String: Int] = [:]
+    var parameters: [String: Any] = [:]
     var httpHeaders: [String: String] = [:]
-    var recordOffset = 0
+    var startRecordOfResultsSet = 0
     let url = URL(string: Constants.kOrgUrl)
 
 
@@ -36,11 +35,14 @@ class MasterViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
             self.title = "Historic Places"
         }
-        parameters["limit"] = 100
-        parameters["offset"] = recordOffset
-        httpHeaders[ "apikey"] = Constants.kApiKey
+        
+        // Set parameter values for GET request to retrieve data
+        parameters["limit"] = Constants.kMaxRecordsToReturn
+        parameters["full"] = Constants.kRetrievedFullRecordDetails
+        parameters["apikey"] = Constants.kApiKey
+        parameters["offset"] = startRecordOfResultsSet
 
-        // Set place names to master view
+        // Use GET request to set place names for master view
         setPlaces()
     }
 
@@ -85,12 +87,14 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /**
     @objc
     func insertNewObject(_ sender: Any) {
         places.insert(HistoricPlace(), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
+    */
 
     // MARK: - Segues
 
@@ -163,11 +167,12 @@ class MasterViewController: UITableViewController {
                     if 0 != value.count {
                         // Results non-zero, add to array
                         for place in value {
+                            // Create a historic place from JSON data
                             self.places.append(place)
                         }
-                        // Increment offset accordingly and retrieve more
-                        self.recordOffset = self.places.count
-                        self.parameters["offset"] = self.recordOffset
+                        // Increment offset accordingly and retrieve more results
+                        self.startRecordOfResultsSet = self.places.count
+                        self.parameters["offset"] = self.startRecordOfResultsSet
                         self.setPlaces()
                     } else {
                         // Results retrieved zero, now reload table view
@@ -190,5 +195,5 @@ class MasterViewController: UITableViewController {
             }
         }
     }
-}
+ }
 

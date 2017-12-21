@@ -21,10 +21,6 @@ class Link : Mappable {
     var  entityType: String?
     var  url: String?
     
-    
-    
-    
-    
     init() {
         entityId = 0
         entityLinkId = 0
